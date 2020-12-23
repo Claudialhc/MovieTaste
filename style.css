@@ -8,6 +8,7 @@
     height: 250px;
     width: 250px;
     float: left;
+    margin: 2%;
 }
 .subtitle {
     padding-left: 300px;
@@ -20,4 +21,6 @@ background-color: rgb(0, 255, 200);
 }
 .description {
     font-size: 27px;
+    padding: 10%;
+    
 }
