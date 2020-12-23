@@ -6,9 +6,10 @@ $("#searchBtn").on("click", function() {
     }
     
     var searchVal = $("#searchBar").val();
-    var key = "8549cdbb";
-    var movieQuery = "https://www.omdbapi.com/?t=" + searchVal + "&y=&plot=short&apikey=" + key;
-    
+    var movieKey = "8549cdbb";
+    var movieQuery = "https://www.omdbapi.com/?t=" + searchVal + "&y=&plot=short&apikey=" + movieKey;
+    var gifKey = "zKYzYyTDTozqvU58y7QD6QfI8u0MDxoj";
+    var gifQuery = "https://api.giphy.com/v1/gifs/search?api-key=" + gifKey + "&limit=50&q=" + searchVal;
 
     $.ajax({
         url: movieQuery,
@@ -17,19 +18,28 @@ $("#searchBtn").on("click", function() {
         // The movie response works. Just need divs and placements on index
         console.log(response);
         var movieTitle = response.Title;
-        //Select element-.text(movieTitle);
+        $("#movie-title").text(movieTitle);
         var poster = response.Poster;
-        //$("<img>").attr("src", poster) <img> will need an id
+        $("#poster").attr("src", poster);
         var releaseYear = response.Released;
-        //Select element-.text(releaseYear)
+        $("#release-year").text(releaseYear);
         var rating = response.Rated;
-        //select element-.text(rating);
+        $("#rating").text(rating);
         var actors = response.Actors;
-        //select element-.text(actors);
+        $("#actors").text(actors);
         var plot = response.Plot;
-        //select element-.text(plot);
-        //Do not use append(). .text will set the text of the span/element
+        $("#plot").text(plot);
 
       });
-})
 
+      $.ajax({
+        url: gifQuery,
+        method: "GET",
+      }).then(function (response) {
+        
+        //gif response goes here
+        //content.data[index?].images.downsized.url
+        
+
+
+})})
