@@ -1,3 +1,17 @@
 .field {
     float: right;
 }
+.field {
+    float: right;
+}
+#logo {
+    height: 200px;
+    width: 200px;
+    float: left;
+}
+.subtitle {
+    padding-left: 250px;
+}
+/*#cols1 {
+    background-color: rgb(81, 223, 216);
+}
