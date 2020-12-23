@@ -17,8 +17,7 @@
                     <div class="control">
                         <input class="input" id="searchBar" type="text" placeholder="Enter Search"/>
                     </div>
-                    <div
-                        class="control">
+                    <div class="control">
                         <button class="button is-info" id="searchBtn">
                             Search
                         </button>
@@ -31,9 +30,10 @@
             </div>
         </section>
         <section class="hero is-danger is-bold">
-            <div class="hero-body">
+            <div
+                class="hero-body">
                 <!-- The logo image and the text should go in different divs so that when viewed on smaller screens like phones
-                the logo will appear on top and the text below it -->
+                                                                                                the logo will appear on top and the text below it -->
                 <div class="container">
                     <img id="logo" src="assets/logo.png">
                     <h2 class="subtitle description">
@@ -44,22 +44,31 @@
             </div>
         </section>
         <div class="columns">
-            <div class="column has-background-warning">
+            <div class="column has-background-warning" id="movieColumn">
                 <h1>
                     <!-- movie title will go in strong tag. Keep empty for now -->
-                    <strong class="typeof"></strong>
+                    <strong id="movie-title" class="typeof"></strong>
                 </h1>
-                <!--Movie column id-->
+                <img id="poster" src="">
+                <ol>
+                    <!--Movie column id-->
                     <!-- poster -->
+                        <p>Rating: <span id="rating"> </span>
+                    </p>
                     <!-- year and rating -->
+                    <p>Actors:
+                        <span id="actors"></span>
+                    </p>
                     <!-- actors -->
+                    <p>Plot:
+                        <span id="plot"></span>
+                    </p>
                     <!-- plot -->
-
-                <p>Move response will go here.</p>
+                </ol>
             </div>
             <div class="column has-background-info">
                 <h1>
-                <!--Giphy column id-->
+                    <!--Giphy column id-->
                     <strong id="typeof">Giphy:</strong>
                 </h1>
                 Second column Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea sapiente nostrum illum obcaecati laborum, reprehenderit ullam! Rem natus illo a asperiores excepturi quod similique in dolor nesciunt, minima deleniti dicta.
