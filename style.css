@@ -5,13 +5,19 @@
     float: right;
 }
 #logo {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     float: left;
 }
 .subtitle {
-    padding-left: 250px;
+    padding-left: 300px;
 }
-/*#cols1 {
-    background-color: rgb(81, 223, 216);
+.footer {
+background-color: rgb(0, 255, 200);
+}
+.typeof {
+    font-size: 30px;
+}
+.description {
+    font-size: 27px;
 }
