@@ -57,3 +57,8 @@ $("#searchBtn").on("click", function () {
   });
 });
 
+$("#backBtn").on("click", function () {
+  $(window).scrollTop(0);
+  console.log("?");
+});
+
