@@ -16,14 +16,19 @@ $("#searchBtn").on("click", function () {
   var gifQuery =
     "https://api.giphy.com/v1/gifs/search?&api_key=" +
     gifKey +
-    "&limit=1&q=" +
+    "&limit=30&q=" +
     searchVal;
 
   $.ajax({
     url: movieQuery,
     method: "GET",
   }).then(function (response) {
-    // The movie response works. Just need divs and placements on index
+    //This for loop removes the previous img's when entering a new search
+    for(x = 0; x < 30; x++) {
+      $("#gifs img:last-child").remove();
+      console.log("test");
+    }
+    //The following lines retrieve the movie response and set the info
     console.log(response);
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
@@ -43,14 +48,12 @@ $("#searchBtn").on("click", function () {
     url: gifQuery,
     method: "GET",
   }).then(function (response) {
-    //gif response goes here
-    //content.data[index?].images.downsized.url
-    //may need to create a loop to go through the array of results?
-    console.log(response);
-    // $("#gifs").append(response.data[0].images.downsized_medium.url);
-    //^^May need to go in an img tag? Test out differnet things
-    
-    
-    // $("#searchBar").val("");
+    //This for loop adds gifs
+    for(i = 0; i < 30; i++) {
+      $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
+    }
+    $("#searchBar").val("");
+    return;
   });
 });
+
