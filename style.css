@@ -1,25 +1,41 @@
-.field {
-    float: right;
+/* to align all the elements on navbar */
+.hero {
+}
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.title {
+  font-size: 50px;
+  width: 50%;
 }
 .field {
-    float: right;
+  margin-left: auto;
 }
+
 #logo {
-    height: 250px;
-    width: 250px;
-    float: left;
-    margin: 2%;
+  height: 250px;
+  width: 250px;
+  float: left;
+  margin: 2%;
 }
 .subtitle {
-    padding-left: 300px;
+  padding-left: 300px;
 }
+.columns:not(:last-child) {
+  margin-bottom: 0;
+}
+
 .footer {
-background-color: rgb(0, 255, 200);
+  background-color: rgb(0, 255, 200);
+  padding: 10%;
 }
 .typeof {
-    font-size: 30px;
+  font-size: 30px;
 }
 .description {
+<<<<<<< HEAD
     font-size: 27px;
     padding: 10%;
     
@@ -53,3 +69,8 @@ background-color: rgb(0, 255, 200);
 #movieText {
     float: right;
 }
+=======
+  font-size: 27px;
+  padding: 10%;
+}
+>>>>>>> ccd2e36e89e8064b86eb44d37502c20811f547cd
