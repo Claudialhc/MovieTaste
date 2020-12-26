@@ -102,27 +102,26 @@ $("#backBtn").on("click", function () {
 
 
 //Theoretically this should work. Need stable internet connection to test
-// $("#randomBtn").on("click", function () {
-//   for (x = 0; x < 30; x++) {
-//     $("#gifs img:last-child").remove();
-//   }
+$("#randomBtn").on("click", function () {
+  for (x = 0; x < 30; x++) {
+    $("#gifs img:last-child").remove();
+  }
 
-//   var gifKey = "zKYzYyTDTozqvU58y7QD6QfI8u0MDxoj";
-//   var gifQuery =
-//     "https://api.giphy.com/v1/gifs/trending?&api_key=" +
-//     gifKey + "&limit=30";
+  var gifKey = "zKYzYyTDTozqvU58y7QD6QfI8u0MDxoj";
+  var gifQuery =
+    "https://api.giphy.com/v1/gifs/trending?&api_key=" +
+    gifKey + "&limit=30";
 
-//   $.ajax({
-//     url: gifQuery,
-//     method: "GET",
-//   }).then(function (response) {
-//     //This for loop adds gifs
-//     for (y = 0; y < 30; y++) {
-//       console.log(response);
-//       $("<img>").attr("src", response.data[y].images.downsized_medium.url).appendTo("#gifs");
-//     }
+  $.ajax({
+    url: gifQuery,
+    method: "GET",
+  }).then(function (response) {
+    //This for loop adds gifs
+    for (y = 0; y < 30; y++) {
+      console.log(response);
+      $("<img>").attr("src", response.data[y].images.downsized_medium.url).appendTo("#gifs");
+    }
 
-//     return;
-//   });
-// });
-
+    return;
+  });
+});
