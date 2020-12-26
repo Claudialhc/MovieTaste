@@ -1,5 +1,37 @@
-// $(document).ready(function(){/*code here*/}); for local storage page load
+function historyCheck() {
+  if (localStorage.getItem("history") === null) {
+    return;
+  }
+  var hist = localStorage.getItem("history");
+  var key = "8549cdbb";
+  var query =
+    "https://www.omdbapi.com/?t=" +
+    hist +
+    "&y=&plot=short&apikey=" +
+    key;
 
+  $.ajax({
+    url: query,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    var movieTitle = response.Title;
+    $("#movie-title").text(movieTitle);
+    var poster = response.Poster;
+    $("#poster").attr("src", poster);
+    var releaseYear = response.Released;
+    $("#release-year").text(releaseYear);
+    var rating = response.Rated;
+    $("#rating").text(rating);
+    var actors = response.Actors;
+    $("#actors").text(actors);
+    var plot = response.Plot;
+    $("#plot").text(plot);
+  });
+}
+
+//Checks local storage for last movie searched
+document.onload = historyCheck();
 
 $("#searchBtn").on("click", function () {
   //press enter for search?
@@ -23,6 +55,9 @@ $("#searchBtn").on("click", function () {
     "&limit=30&q=" +
     searchVal;
 
+  localStorage.removeItem("history");
+  localStorage.setItem("history", searchVal);
+
   $.ajax({
     url: movieQuery,
     method: "GET",
@@ -35,7 +70,6 @@ $("#searchBtn").on("click", function () {
     console.log(response);
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
-    localStorage.setItem()
     var poster = response.Poster;
     $("#poster").attr("src", poster);
     var releaseYear = response.Released;
