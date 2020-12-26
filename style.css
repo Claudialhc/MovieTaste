@@ -35,42 +35,6 @@
   font-size: 30px;
 }
 .description {
-<<<<<<< HEAD
-    font-size: 27px;
-    padding: 10%;
-    
-}
-.textboxone {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-#webtitle {
-    color: hotpink;
-    font-size: 60px;
-    float: left;
-}
-.control {
-    float: right;
-}
-#randomBtn {
-    background-color: rgb(255, 73, 164);
-    color: white;
-}
-#backBtn {
-    background-color: rgb(255, 73, 164);
-    color: white;
-}
-#searchBtn {
-    background-color: rgb(255, 73, 164);
-}
-#poster {
-    float: left;
-}
-#movieText {
-    float: right;
-}
-=======
   font-size: 27px;
   padding: 10%;
 }
->>>>>>> ccd2e36e89e8064b86eb44d37502c20811f547cd
