@@ -25,6 +25,31 @@ background-color: rgb(0, 255, 200);
     
 }
 .textboxone {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#webtitle {
+    color: hotpink;
+    font-size: 60px;
+    float: left;
+}
+.control {
+    float: right;
+}
+#randomBtn {
+    background-color: rgb(255, 73, 164);
+    color: white;
+}
+#backBtn {
+    background-color: rgb(255, 73, 164);
+    color: white;
+}
+#searchBtn {
+    background-color: rgb(255, 73, 164);
+}
+#poster {
+    float: left;
+}
+#movieText {
+    float: right;
 }
