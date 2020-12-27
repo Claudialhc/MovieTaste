@@ -42,10 +42,13 @@ $(document).on('keypress', function(e) {
 function searchQuery() {
   if ($("#searchBar").val() === "") {
     //DON'T USE ALERT
-    alert("Enter a movie title");
+    error.textContent = "Search for a movie, my dude"
+    error.style.color = "red";
+    error.style.fontFamily = "Impact";
     return;
   }
 
+  error.textContent = "";
   var searchVal = $("#searchBar").val();
   var movieKey = "8549cdbb";
   var movieQuery =
@@ -69,8 +72,9 @@ function searchQuery() {
   }).then(function (response) {
     // This for loop removes the previous img's when entering a new search
     if (response.Response === "False") {
-      //CHANGE ALERT HERE
-      alert("Movie not found.");
+      error.textContent = "Enter a valid movie title"; 
+      error.style.color = "red";
+      error.style.fontFamily = "Impact";
       return;
     }
 
@@ -78,6 +82,7 @@ function searchQuery() {
       $("#gifs img:last-child").remove();
     }
 
+    error.textContent = "";
     //The following lines retrieve the movie response and set the info
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
