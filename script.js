@@ -33,10 +33,15 @@ function historyCheck() {
 //Checks local storage for last movie searched
 document.onload = historyCheck();
 
-$("#searchBtn").on("click", function () {
-  //press enter for search?
+$(document).on('keypress', function(e) {
+  if(e.which == 13) {
+      searchQuery();
+  }
+});
+
+function searchQuery() {
   if ($("#searchBar").val() === "") {
-    //Don't use alert
+    //DON'T USE ALERT
     alert("Enter a movie title");
     return;
   }
@@ -54,7 +59,7 @@ $("#searchBtn").on("click", function () {
     gifKey +
     "&limit=30&q=" +
     searchVal;
-
+  
   localStorage.removeItem("history");
   localStorage.setItem("history", searchVal);
 
@@ -62,12 +67,18 @@ $("#searchBtn").on("click", function () {
     url: movieQuery,
     method: "GET",
   }).then(function (response) {
-    //This for loop removes the previous img's when entering a new search
+    // This for loop removes the previous img's when entering a new search
+    if (response.Response === "False") {
+      //CHANGE ALERT HERE
+      alert("Movie not found.");
+      return;
+    }
+
     for (x = 0; x < 30; x++) {
       $("#gifs img:last-child").remove();
     }
+
     //The following lines retrieve the movie response and set the info
-    console.log(response);
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
     var poster = response.Poster;
@@ -86,7 +97,6 @@ $("#searchBtn").on("click", function () {
     url: gifQuery,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     //This for loop adds gifs
     for (i = 0; i < 30; i++) {
       $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
@@ -94,34 +104,12 @@ $("#searchBtn").on("click", function () {
     $("#searchBar").val("");
     return;
   });
-});
+}
 
+$("#searchBtn").on("click", function () {
+  searchQuery();
+});
+  
 $("#backBtn").on("click", function () {
   $(window).scrollTop(0);
-});
-
-
-//Theoretically this should work. Need stable internet connection to test
-$("#randomBtn").on("click", function () {
-  for (x = 0; x < 30; x++) {
-    $("#gifs img:last-child").remove();
-  }
-
-  var gifKey = "zKYzYyTDTozqvU58y7QD6QfI8u0MDxoj";
-  var gifQuery =
-    "https://api.giphy.com/v1/gifs/trending?&api_key=" +
-    gifKey + "&limit=30";
-
-  $.ajax({
-    url: gifQuery,
-    method: "GET",
-  }).then(function (response) {
-    //This for loop adds gifs
-    for (y = 0; y < 30; y++) {
-      console.log(response);
-      $("<img>").attr("src", response.data[y].images.downsized_medium.url).appendTo("#gifs");
-    }
-
-    return;
-  });
 });
