@@ -1,17 +1,38 @@
-/* to align all the elements on navbar */
-.hero {
+#header {
+  background-color: rgb(51, 241, 255);
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  text-align: center;
 }
-.container{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+#navText {
+  font-size: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: hotpink;
+  font-weight: bold;
 }
-.title {
-  font-size: 50px;
-  width: 50%;
+#nav {
+  background-color: purple;
+  text-align: center;
+  z-index: 500;
+  position: center;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
-.field {
-  margin-left: auto;
+input[type=text] {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  float: center;
+}
+.button {
+  background-color: rgb(255, 73, 164);
+  color: white;
+}
+#navTxtBox {
+  padding-bottom: 10px;
 }
 
 #logo {
@@ -41,20 +62,6 @@
 .textboxone {
   padding-left: 50px;
   padding-right: 50px;
-}
-.control {
-  float: right;
-}
-#randomBtn {
-  background-color: rgb(255, 73, 164);
-  color: white;
-}
-#backBtn {
-  background-color: rgb(255, 73, 164);
-  color: white;
-}
-#searchBtn {
-  background-color: rgb(255, 73, 164);
 }
 #poster {
   float: left;
