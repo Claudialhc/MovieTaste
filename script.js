@@ -1,10 +1,70 @@
-$("#searchBtn").on("click", function () {
+var nav = document.getElementById('nav');
+
+window.onscroll = function () {
+
+  if(window.pageYOffset > 100){
+
+   nav.style.position = "fixed";
+   nav.style.top = 0;
+
+   }else{
+     // nav.style.position = "absolute";
+     nav.style.position = 'relative'; //fixed
+     nav.style.top = 100;
+   }
+}
+
+function historyCheck() {
+  if (localStorage.getItem("history") === null) {
+    return;
+  }
+  var hist = localStorage.getItem("history");
+  var key = "8549cdbb";
+  var query =
+    "https://www.omdbapi.com/?t=" +
+    hist +
+    "&y=&plot=short&apikey=" +
+    key;
+
+  $.ajax({
+    url: query,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    var movieTitle = response.Title;
+    $("#movie-title").text(movieTitle);
+    var poster = response.Poster;
+    $("#poster").attr("src", poster);
+    var releaseYear = response.Released;
+    $("#release-year").text(releaseYear);
+    var rating = response.Rated;
+    $("#rating").text(rating);
+    var actors = response.Actors;
+    $("#actors").text(actors);
+    var plot = response.Plot;
+    $("#plot").text(plot);
+  });
+}
+
+//Checks local storage for last movie searched
+document.onload = historyCheck();
+
+$(document).on('keypress', function(e) {
+  if(e.which == 13) {
+      searchQuery();
+  }
+});
+
+function searchQuery() {
   if ($("#searchBar").val() === "") {
-    //Don't use alert
-    alert("Enter a movie title");
+    //DON'T USE ALERT
+    error.textContent = "Search for a movie, my dude"
+    error.style.color = "red";
+    error.style.fontFamily = "Impact";
     return;
   }
 
+  error.textContent = "";
   var searchVal = $("#searchBar").val();
   var movieKey = "8549cdbb";
   var movieQuery =
@@ -16,15 +76,30 @@ $("#searchBtn").on("click", function () {
   var gifQuery =
     "https://api.giphy.com/v1/gifs/search?&api_key=" +
     gifKey +
-    "&limit=1&q=" +
+    "&limit=30&q=" +
     searchVal;
+  
+  localStorage.removeItem("history");
+  localStorage.setItem("history", searchVal);
 
   $.ajax({
     url: movieQuery,
     method: "GET",
   }).then(function (response) {
-    // The movie response works. Just need divs and placements on index
-    console.log(response);
+    // This for loop removes the previous img's when entering a new search
+    if (response.Response === "False") {
+      error.textContent = "Enter a valid movie title"; 
+      error.style.color = "red";
+      error.style.fontFamily = "Impact";
+      return;
+    }
+
+    for (x = 0; x < 30; x++) {
+      $("#gifs img:last-child").remove();
+    }
+
+    error.textContent = "";
+    //The following lines retrieve the movie response and set the info
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
     var poster = response.Poster;
@@ -43,14 +118,19 @@ $("#searchBtn").on("click", function () {
     url: gifQuery,
     method: "GET",
   }).then(function (response) {
-    //gif response goes here
-    //content.data[index?].images.downsized.url
-    //may need to create a loop to go through the array of results?
-    console.log(response);
-    // $("#gifs").append(response.data[0].images.downsized_medium.url);
-    //^^May need to go in an img tag? Test out differnet things
-    
-    
-    // $("#searchBar").val("");
+    //This for loop adds gifs
+    for (i = 0; i < 30; i++) {
+      $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
+    }
+    $("#searchBar").val("");
+    return;
   });
+}
+
+$("#searchBtn").on("click", function () {
+  searchQuery();
+});
+  
+$("#backBtn").on("click", function () {
+  $(window).scrollTop(0);
 });

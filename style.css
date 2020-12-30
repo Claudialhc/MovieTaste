@@ -1,26 +1,71 @@
-.field {
-    float: right;
+#header {
+  background-color: rgb(51, 241, 255);
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  text-align: center;
 }
-.field {
-    float: right;
+#navText {
+  font-size: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: hotpink;
+  font-weight: bold;
 }
+#nav {
+  background-color: purple;
+  text-align: center;
+  z-index: 500;
+  position: center;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+input[type=text] {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  float: center;
+}
+.button {
+  background-color: rgb(255, 73, 164);
+  color: white;
+}
+#navTxtBox {
+  padding-bottom: 10px;
+}
+
 #logo {
-    height: 250px;
-    width: 250px;
-    float: left;
-    margin: 2%;
+  height: 250px;
+  width: 250px;
+  float: left;
+  margin: 2%;
 }
 .subtitle {
-    padding-left: 300px;
+  padding-left: 300px;
 }
+.columns:not(:last-child) {
+  margin-bottom: 0;
+}
+
 .footer {
-background-color: rgb(0, 255, 200);
+  background-color: rgb(0, 255, 200);
+  padding: 10%;
 }
 .typeof {
-    font-size: 30px;
+  font-size: 30px;
 }
 .description {
-    font-size: 27px;
-    padding: 10%;
-    
+  font-size: 27px;
+  padding: 10%;
+}
+.textboxone {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+#poster {
+  float: left;
+}
+#movieText {
+  float: right;
 }
