@@ -1,40 +1,16 @@
-#header {
-  background-color: rgb(51, 241, 255);
-  width: 100%;
-  text-align: center;
-  width: 100%;
-  text-align: center;
+/* to align all the elements on navbar */
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
-#navText {
-  font-size: 60px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  color: hotpink;
-  font-weight: bold;
+.title {
+  font-size: 50px;
+  width: 50%;
 }
-#nav {
-  background-color: purple;
-  text-align: center;
-  z-index: 500;
-  position: center;
-  width: 100%;
-  padding-bottom: 20px;
-  padding-top: 20px;
+.field {
+  margin-left: auto;
 }
-input[type=text] {
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-  float: center;
-}
-.button {
-  background-color: rgb(255, 73, 164);
-  color: white;
-}
-#navTxtBox {
-  padding-bottom: 10px;
-}
-
 #logo {
   height: 250px;
   width: 250px;
@@ -47,7 +23,6 @@ input[type=text] {
 .columns:not(:last-child) {
   margin-bottom: 0;
 }
-
 .footer {
   background-color: rgb(0, 255, 200);
   padding: 10%;
@@ -58,14 +33,4 @@ input[type=text] {
 .description {
   font-size: 27px;
   padding: 10%;
-}
-.textboxone {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-#poster {
-  float: left;
-}
-#movieText {
-  float: right;
 }

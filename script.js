@@ -1,19 +1,3 @@
-var nav = document.getElementById('nav');
-
-window.onscroll = function () {
-
-  if(window.pageYOffset > 100){
-
-   nav.style.position = "fixed";
-   nav.style.top = 0;
-
-   }else{
-     // nav.style.position = "absolute";
-     nav.style.position = 'relative'; //fixed
-     nav.style.top = 100;
-   }
-}
-
 function historyCheck() {
   if (localStorage.getItem("history") === null) {
     return;
@@ -30,7 +14,6 @@ function historyCheck() {
     url: query,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     var movieTitle = response.Title;
     $("#movie-title").text(movieTitle);
     var poster = response.Poster;
@@ -49,6 +32,7 @@ function historyCheck() {
 //Checks local storage for last movie searched
 document.onload = historyCheck();
 
+
 $(document).on('keypress', function(e) {
   if(e.which == 13) {
       searchQuery();
@@ -57,9 +41,8 @@ $(document).on('keypress', function(e) {
 
 function searchQuery() {
   if ($("#searchBar").val() === "") {
-    //DON'T USE ALERT
     error.textContent = "Search for a movie, my dude"
-    error.style.color = "red";
+    error.style.color = "black";
     error.style.fontFamily = "Impact";
     return;
   }
@@ -76,7 +59,7 @@ function searchQuery() {
   var gifQuery =
     "https://api.giphy.com/v1/gifs/search?&api_key=" +
     gifKey +
-    "&limit=30&q=" +
+    "&limit=20&q=" +
     searchVal;
   
   localStorage.removeItem("history");
@@ -86,17 +69,15 @@ function searchQuery() {
     url: movieQuery,
     method: "GET",
   }).then(function (response) {
-    // This for loop removes the previous img's when entering a new search
     if (response.Response === "False") {
       error.textContent = "Enter a valid movie title"; 
-      error.style.color = "red";
+      error.style.color = "black";
       error.style.fontFamily = "Impact";
+      $("#searchBar").val("");
       return;
     }
-
-    for (x = 0; x < 30; x++) {
-      $("#gifs img:last-child").remove();
-    }
+    // This for loop removes the previous img's when entering a new search
+    
 
     error.textContent = "";
     //The following lines retrieve the movie response and set the info
@@ -119,7 +100,10 @@ function searchQuery() {
     method: "GET",
   }).then(function (response) {
     //This for loop adds gifs
-    for (i = 0; i < 30; i++) {
+    for (x = 0; x < 20; x++) {
+      $("#gifs img:last-child").remove();
+    }
+    for (i = 0; i < 20; i++) {
       $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
     }
     $("#searchBar").val("");
