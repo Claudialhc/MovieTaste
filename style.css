@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 /* to align all the elements on navbar */
 .container {
   display: flex;
@@ -7,9 +10,13 @@
 .title {
   font-size: 60px;
   width: 100%;
-  font-family: 'Bungee Outline', cursive;
+  font-family: "Bungee Outline", cursive;
   text-align: center;
 }
+.title h1 {
+  color: white;
+}
+
 .field {
   margin-left: auto;
 }
@@ -36,21 +43,26 @@
   font-size: 27px;
   padding: 10%;
 }
-#navLogo {
+/* #navLogo {
 size: auto;
-}
+} */
 .input {
   width: 400px;
-  height:40px;
+  height: 40px;
   float: center;
 }
-#secondNav {
+#searchForm {
   padding: 2%;
   width: 100%;
   z-index: 500;
-}
-.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   background-color: hotpink;
+}
+header {
+  background-color: hotpink;
+  text-align: center;
 }
 #movieColumn {
   padding: 3%;
@@ -64,4 +76,7 @@ size: auto;
 #searchBtn {
   background-color: rgb(255, 73, 164);
   color: white;
+}
+.columns {
+  margin-top: 0;
 }
