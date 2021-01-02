@@ -28,7 +28,7 @@ function historyCheck() {
     $("#plot").text(plot);
   });
 }
-var nav = document.getElementById('secondNav');
+var nav = document.getElementById('searchForm');
 
 window.onscroll = function () {
 
