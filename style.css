@@ -5,10 +5,10 @@
   flex-direction: row;
 }
 .title {
-  font-size: 50px;
-  width: 50%;
+  font-size: 60px;
+  width: 100%;
   font-family: 'Bungee Outline', cursive;
-  /* color: fuchsia; */
+  text-align: center;
 }
 .field {
   margin-left: auto;
@@ -35,4 +35,33 @@
 .description {
   font-size: 27px;
   padding: 10%;
+}
+#navLogo {
+size: auto;
+}
+.input {
+  width: 400px;
+  height:40px;
+  float: center;
+}
+#secondNav {
+  padding: 2%;
+  width: 100%;
+  z-index: 500;
+}
+.navbar-brand {
+  background-color: hotpink;
+}
+#movieColumn {
+  padding: 3%;
+  position: center;
+}
+.button {
+  background-color: rgb(255, 73, 164);
+  color: white;
+  border: none;
+}
+#searchBtn {
+  background-color: rgb(255, 73, 164);
+  color: white;
 }
