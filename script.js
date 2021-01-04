@@ -9,6 +9,8 @@ function historyCheck() {
     hist +
     "&y=&plot=short&apikey=" +
     key;
+  var keyGif = "zKYzYyTDTozqvU58y7QD6QfI8u0MDxoj";
+  var queryGif = "https://api.giphy.com/v1/gifs/search?&api_key=" + keyGif + "&limit=50&q=" + hist;
 
   $.ajax({
     url: query,
@@ -26,6 +28,21 @@ function historyCheck() {
     $("#actors").text(actors);
     var plot = response.Plot;
     $("#plot").text(plot);
+  });
+
+  $.ajax({
+    url: queryGif,
+    method: "GET",
+  }).then(function (response) {
+    //This for loop adds gifs
+    for (x = 0; x < 50; x++) {
+      $("#gifs img:last-child").remove();
+    }
+    for (i = 0; i < 50; i++) {
+      $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
+    }
+    $("#searchBar").val("");
+    return;
   });
 }
 var nav = document.getElementById('searchForm');
@@ -74,7 +91,7 @@ function searchQuery() {
   var gifQuery =
     "https://api.giphy.com/v1/gifs/search?&api_key=" +
     gifKey +
-    "&limit=20&q=" +
+    "&limit=50&q=" +
     searchVal;
   
   localStorage.removeItem("history");
@@ -115,10 +132,10 @@ function searchQuery() {
     method: "GET",
   }).then(function (response) {
     //This for loop adds gifs
-    for (x = 0; x < 20; x++) {
+    for (x = 0; x < 50; x++) {
       $("#gifs img:last-child").remove();
     }
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < 50; i++) {
       $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
     }
     $("#searchBar").val("");
