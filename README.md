@@ -12,7 +12,7 @@ $.ajax({
     method: "GET",
   }).then(function (response) {
     //This for loop adds gifs
-    for (x = 0; x < 20; x++) {
+    for (x = 0; x < 50; x++) {
       $("#gifs img:last-child").remove();
     }
     for (i = 0; i < 20; i++) {
