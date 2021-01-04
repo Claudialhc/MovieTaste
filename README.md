@@ -15,7 +15,7 @@ $.ajax({
     for (x = 0; x < 50; x++) {
       $("#gifs img:last-child").remove();
     }
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < 50; i++) {
       $("<img>").attr("src", response.data[i].images.downsized_medium.url).appendTo("#gifs");
     }
     $("#searchBar").val("");
